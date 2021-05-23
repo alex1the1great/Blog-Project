@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "==3.2.3"
+psycopg2-binary = "==2.8.6"
+python-decouple = "==3.4"
+django-debug-toolbar = "==3.2.1"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
