@@ -34,7 +34,9 @@ BUILT_IN_APPS = [
     'django.contrib.staticfiles',
 ]
 
-USER_DEFINE_APPS = []
+USER_DEFINE_APPS = [
+    'apps.blog.apps.BlogConfig',
+]
 
 THIRD_PARTY_APPS = []
 
