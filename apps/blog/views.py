@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 from .models import Post
 from .forms import EmailPostForm
@@ -43,7 +44,18 @@ def post_share(request, post_id):
             subject = f"{cd['name']} recommends you to read {post.title}"
             message = f"Read {post.title} at {post_url}\n\n {cd['name']}'s comments: {cd['comments']}"
 
-            send_mail(subject, message, cd['email'], [cd['to']])
+            email_context = {
+                'name': cd['name'],
+                'sender': cd['email'],
+                'receiver': cd['to'],
+                'post_url': post_url,
+                'post': post
+            }
+
+            # Send html template email.
+            html_message = render_to_string('mail_template.html', email_context)
+
+            send_mail(subject, message, cd['email'], [cd['to']], html_message=html_message)
             sent = True
     else:
         form = EmailPostForm()

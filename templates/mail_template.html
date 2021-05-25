@@ -1,0 +1,13 @@
+<h3>{{ name }} recommends you to read " {{ post.title }} "</h3>
+<p><strong>From:</strong> {{ sender}}</p>
+<p><strong>Receiver:</strong> {{ receiver}}</p>
+<p>
+    {{ post.body|truncatewords:30|linebreaks }}
+</p>
+<p>
+    <a href="{{ post_url }}" target="_blank">Complete post</a>
+</p>
+
+<footer>
+    &copy;BlogProject 2021
+</footer>
