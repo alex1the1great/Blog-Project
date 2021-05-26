@@ -45,3 +45,17 @@ class Post(DateTimeFieldModel):
                                                  self.publish.day,
                                                  self.slug])
 
+
+class Comment(DateTimeFieldModel):
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    active = models.BooleanField(default=True)
+
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+
+    class Meta:
+        ordering = ('created',)
+
+    def __str__(self):
+        return f'Comment by {self.name} on {self.post}'
