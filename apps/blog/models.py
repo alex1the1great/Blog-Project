@@ -9,7 +9,15 @@ class PublishedManager(models.Manager):
         return super(PublishedManager, self).get_queryset().filter(status='published')
 
 
-class Post(models.Model):
+class DateTimeFieldModel(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
+class Post(DateTimeFieldModel):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
         ('published', 'Published'),
