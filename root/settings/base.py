@@ -38,7 +38,9 @@ USER_DEFINE_APPS = [
     'apps.blog.apps.BlogConfig',
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    'taggit'
+]
 
 INSTALLED_APPS = BUILT_IN_APPS + USER_DEFINE_APPS + THIRD_PARTY_APPS
 
